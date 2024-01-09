@@ -7,8 +7,6 @@ DOCKER_REGISTRY="localhost:5000"
 IMAGE_TAG="ontdekstation-client-release"
 VERSION="${1-latest}"
 
-docker login "$DOCKER_REGISTRY"
-
 # script takes an optional tag argument, otherwise uses "latest"
 docker build \
     -f /var/lib/jenkins/workspace/FrontEndTest/Dockerfile.release \
