@@ -46,7 +46,7 @@ pipeline {
                         spec:
                           containers:
                           - name: ontdekstation-client
-                            image: 172.16.20.110:5000/ontdekstation-client-release:latest
+                            image: http://172.16.20.110:5000/ontdekstation-client-release:latest
                             ports:
                             - containerPort: 80"""
 
