@@ -8,13 +8,14 @@ pipeline {
     }
 
     stages {
-      stage('Checkout') {
+        stage('Checkout') {
             steps {
                 // Assuming you have your code in a Git repository
                 checkout scm
             }
         }
-    stage('Build Docker Image') {
+
+        stage('Build Docker Image') {
             steps {
                 script {
                     // Execute your .sh script to build Docker image
@@ -24,7 +25,6 @@ pipeline {
             }
         }
 
-      
         stage('Build and Deploy') {
             steps {
                 script {
@@ -61,13 +61,14 @@ pipeline {
                         - protocol: TCP
                           port: 3000
                           targetPort: 80
-                      type: LoadBalancer"""
-                    
+                      type: LoadBalancer
+                    """
+
                     // Save the pod configuration to a file
                     writeFile file: 'ontdekstation-client.yaml', text: podConfig
 
                     // Use kubectl to apply the pod configuration
-                    sh('kubectl --kubeconfig=${KUBE_CONFIG} apply -f ontdekstation-client.yaml -n ${KUBE_NAMESPACE}')
+                    sh "kubectl --kubeconfig=${KUBE_CONFIG} apply -f ontdekstation-client.yaml -n ${KUBE_NAMESPACE}"
                 }
             }
         }
