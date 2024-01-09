@@ -3,7 +3,7 @@ import Router from "./Router";
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://172.16.20.151:8082/api"
+  baseURL: "http://145.220.74.145:8082/api"
 });
 
 function App() {

@@ -5,7 +5,7 @@ it("Should POST the correct json", () => {
 
   cy.intercept(
     "POST",
-    "http://172.16.20.151:8082/api/Authentication/register",
+    "http://145.220.74.145:8082/api/Authentication/register",
     {}
   ).as("addUser");
   cy.visit("/Signup");

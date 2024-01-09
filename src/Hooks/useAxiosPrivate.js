@@ -5,7 +5,7 @@ import useAuth from "./useAuth";
 import axios from "axios";
 
 const axiosPrivate = axios.create({
-    baseURL: "http://172.16.20.151:8082/api",
+    baseURL: "http://145.220.74.145:8082/api",
     headers: { 'Content-Type': 'application/JSON' },
     withCredentials: true
 });
