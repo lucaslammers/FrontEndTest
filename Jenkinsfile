@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage('Build and Deploy') {
+        stage('Deploy Pod') {
             steps {
                 script {
                     // Define the pod YAML configuration
@@ -48,8 +48,22 @@ pipeline {
                           - name: ontdekstation-client
                             image: ontdekstation-client-release:latest
                             ports:
-                            - containerPort: 80
-                    ---
+                            - containerPort: 80"""
+
+                    // Save the pod configuration to a file
+                    writeFile file: 'ontdekstation-client.yaml', text: podConfig
+
+                    // Use kubectl to apply the pod configuration
+                    sh "kubectl --kubeconfig=${KUBE_CONFIG} apply -f ontdekstation-client.yaml -n ${KUBE_NAMESPACE}"
+                }
+            }
+        }
+
+        stage('Deploy Service ') {
+            steps {
+                script {
+                    // Define the pod YAML configuration
+                    def podConfig = """
                     apiVersion: v1
                     kind: Service
                     metadata:
@@ -61,14 +75,13 @@ pipeline {
                         - protocol: TCP
                           port: 3000
                           targetPort: 80
-                      type: LoadBalancer
-                    """
+                      type: LoadBalancer"""
 
                     // Save the pod configuration to a file
-                    writeFile file: 'ontdekstation-client.yaml', text: podConfig
+                    writeFile file: 'ontdekstation-client-service.yaml', text: podConfig
 
                     // Use kubectl to apply the pod configuration
-                    sh "kubectl --kubeconfig=${KUBE_CONFIG} apply -f ontdekstation-client.yaml -n ${KUBE_NAMESPACE}"
+                    sh "kubectl --kubeconfig=${KUBE_CONFIG} apply -f ontdekstation-client-service.yaml -n ${KUBE_NAMESPACE}"
                 }
             }
         }
