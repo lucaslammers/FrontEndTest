@@ -47,7 +47,7 @@ pipeline {
                           containers:
                           - name: ontdekstation-client
                             image: 172.16.20.110:5000/ontdekstation-client-release:latest
-                            pull_policy: always
+                            imagePullPolicy: Always
                             ports:
                             - containerPort: 80"""
 
