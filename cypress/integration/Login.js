@@ -11,7 +11,7 @@ describe("Log in page tests", () => {
 
     cy.intercept(
       "POST",
-      "http://localhost:8082/api/Authentication/login",
+      "http://ontdekstation-service:8082/api/Authentication/login",
       {}
     ).as("tryLogin");
 
