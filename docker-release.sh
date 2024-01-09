@@ -2,12 +2,18 @@
 
 set -e
 
+DOCKER_REGISTRY="localhost:5000"
+
 IMAGE_TAG="ontdekstation-client-release"
 VERSION="${1-latest}"
+
+docker login "$DOCKER_REGISTRY"
 
 # script takes an optional tag argument, otherwise uses "latest"
 docker build \
     -f /var/lib/jenkins/workspace/FrontEndTest/Dockerfile.release \
-    -t "$IMAGE_TAG:$VERSION" .
+    -t "$DOCKER_REGISTRY/$IMAGE_TAG:$VERSION" .
 
-echo "$IMAGE_TAG:$VERSION"
+docker push "$DOCKER_REGISTRY/$IMAGE_TAG:$VERSION"
+
+echo "Image pushed to $DOCKER_REGISTRY/$IMAGE_TAG:$VERSION"
