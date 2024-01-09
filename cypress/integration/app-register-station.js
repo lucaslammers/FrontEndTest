@@ -8,7 +8,7 @@ describe("Register station page tests", () => {
     const Latitude = "20.1234";
     const IsPublic = false;
 
-    cy.intercept("POST", "http://ontdekstation-service:8082/api/Station", {}).as(
+    cy.intercept("POST", "http://172.16.20.151:8082/api/Station", {}).as(
       "addStation"
     );
     cy.visit("/register");
@@ -46,7 +46,7 @@ describe("Register station page tests", () => {
     const Latitude = "20.1234";
     const IsPublic = true;
 
-    cy.intercept("POST", "http://ontdekstation-service:8082/api/Station", {}).as(
+    cy.intercept("POST", "http://172.16.20.151:8082/api/Station", {}).as(
       "addStation"
     );
     cy.visit("/register");

@@ -15,7 +15,7 @@ describe('Edit station page tests', () => {
     const LongitudeEdit = "30";
     const LatitudeEdit = "20";
     
-    cy.intercept("GET", "http://ontdekstation-service:8082/api/Station/1", {}).as("getStation");
+    cy.intercept("GET", "http://172.16.20.151:8082/api/Station/1", {}).as("getStation");
   
     cy.visit("http://localhost:3000/Edit/1");
   
@@ -40,7 +40,7 @@ describe('Edit station page tests', () => {
     cy.get(':nth-child(6) > .form-control').type(LongitudeEdit, { delay: 50 });
     cy.get(':nth-child(7) > .form-control').type(LatitudeEdit, { delay: 50 });
   
-    cy.intercept("PUT", "http://ontdekstation-service:8082/api/Station", {}).as("editStation");
+    cy.intercept("PUT", "http://172.16.20.151:8082/api/Station", {}).as("editStation");
   
     cy.get(".btn").click();
   

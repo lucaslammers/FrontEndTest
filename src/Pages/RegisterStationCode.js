@@ -11,7 +11,7 @@ const RegisterStationCode = () => {
     const [databaseTag, setDatabaseTag] = useState();
     let success = false;
     const getMeetstationCode = (databaseTag, registrationCode) => {
-        api.get(`http://ontdekstation-service:8082/api/Station/available?databaseTag=${databaseTag}&registrationCode=${registrationCode}`)
+        api.get(`http://172.16.20.151:8082/api/Station/available?databaseTag=${databaseTag}&registrationCode=${registrationCode}`)
             .then((response) => {
                 if (response.ok) {
                     success = true;
