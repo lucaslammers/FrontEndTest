@@ -7,7 +7,7 @@ VERSION="${1-latest}"
 
 # script takes an optional tag argument, otherwise uses "latest"
 docker build \
-    -f Dockerfile.release \
+    -f /var/lib/jenkins/workspace/FrontEndTest/Dockerfile.release \
     -t "$IMAGE_TAG:$VERSION" .
 
 echo "$IMAGE_TAG:$VERSION"
