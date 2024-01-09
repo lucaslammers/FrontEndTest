@@ -2,7 +2,7 @@
 
 set -e
 
-DOCKER_REGISTRY="172.16.20.110:5000"
+DOCKER_REGISTRY="http://172.16.20.110:5000"
 
 IMAGE_TAG="ontdekstation-client-release"
 VERSION="${1-latest}"
