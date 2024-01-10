@@ -3,7 +3,7 @@
 Voor het gebruik van React zul je eerst node.js moeten installeren, deze kan je hier vinden: https://nodejs.org/en/ 
 
 Na het installeren hiervan kun je de repo clonen, hierna ga je React installeren voor het project. Open het project in vs code en maak een nieuw terminal aan. (Dit kan ook in een normale terminal zoals command prompt)
-Voer hierbij het volgende commando in: 
+Voer hierbij het volgende commando in:  
 
 ```
 npm install --legacy-peer-deps
